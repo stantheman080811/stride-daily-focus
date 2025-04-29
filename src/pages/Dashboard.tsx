@@ -5,6 +5,7 @@ import TaskList from '@/components/TaskList';
 import ChatButton from '@/components/ChatButton';
 import ChatDialog from '@/components/ChatDialog';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Plus } from 'lucide-react';
 
 interface Task {
   id: string;
@@ -90,6 +91,10 @@ const Dashboard = () => {
     console.log(`Long press on goal ${goalId}`);
     // This would show the full plan view in a production app
   };
+  
+  const handleAddGoalClick = () => {
+    setIsChatOpen(true);
+  };
 
   const activeGoal = goals.find(goal => goal.id === activeGoalId);
 
@@ -106,6 +111,13 @@ const Dashboard = () => {
             onLongPress={() => handleLongPress(goal.id)}
           />
         ))}
+        {/* Add Goal Card */}
+        <div 
+          className="goal-card add-goal-card"
+          onClick={handleAddGoalClick}
+        >
+          <Plus size={48} />
+        </div>
       </div>
 
       {/* Task List */}

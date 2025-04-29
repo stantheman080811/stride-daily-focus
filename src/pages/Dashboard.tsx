@@ -4,6 +4,7 @@ import GoalCard from '@/components/GoalCard';
 import TaskList from '@/components/TaskList';
 import ChatButton from '@/components/ChatButton';
 import ChatDialog from '@/components/ChatDialog';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Task {
   id: string;
@@ -18,6 +19,7 @@ interface Goal {
 }
 
 const Dashboard = () => {
+  const isMobile = useIsMobile();
   const [goals, setGoals] = useState<Goal[]>([
     {
       id: '1',
@@ -92,9 +94,9 @@ const Dashboard = () => {
   const activeGoal = goals.find(goal => goal.id === activeGoalId);
 
   return (
-    <div className="min-h-screen bg-stride-white p-6 pt-10 flex flex-col">
+    <div className={`min-h-screen bg-stride-white p-6 pt-10 flex flex-col ${isMobile ? 'mobile-container' : ''}`}>
       {/* Goal Cards */}
-      <div className="flex gap-4 overflow-x-auto pb-8 mb-10 -mx-6 px-6">
+      <div className="flex gap-4 overflow-x-auto pb-8 mb-10 -mx-6 px-6 goal-cards-container">
         {goals.map(goal => (
           <GoalCard
             key={goal.id}

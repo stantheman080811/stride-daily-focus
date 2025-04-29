@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface GoalCardProps {
   title: string;
@@ -16,6 +17,7 @@ const GoalCard: React.FC<GoalCardProps> = ({
   onLongPress 
 }) => {
   const [pressTimer, setPressTimer] = React.useState<NodeJS.Timeout | null>(null);
+  const isMobile = useIsMobile();
 
   const handleMouseDown = () => {
     if (onLongPress) {
@@ -37,7 +39,8 @@ const GoalCard: React.FC<GoalCardProps> = ({
     <div
       className={cn(
         'goal-card',
-        isActive && 'active'
+        isActive && 'active',
+        isMobile && 'mobile'
       )}
       onClick={onClick}
       onMouseDown={handleMouseDown}

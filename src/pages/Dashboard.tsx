@@ -92,9 +92,9 @@ const Dashboard = () => {
   const activeGoal = goals.find(goal => goal.id === activeGoalId);
 
   return (
-    <div className="min-h-screen bg-stride-white p-6 pt-10 relative">
+    <div className="min-h-screen bg-stride-white p-6 pt-10 flex flex-col">
       {/* Goal Cards */}
-      <div className="flex gap-4 overflow-x-auto pb-8 mb-10">
+      <div className="flex gap-4 overflow-x-auto pb-8 mb-10 -mx-6 px-6">
         {goals.map(goal => (
           <GoalCard
             key={goal.id}
@@ -107,16 +107,20 @@ const Dashboard = () => {
       </div>
 
       {/* Task List */}
-      {activeGoal && (
-        <TaskList
-          goalTitle={activeGoal.title}
-          tasks={activeGoal.tasks}
-          onTaskComplete={handleTaskComplete}
-        />
-      )}
+      <div className="flex-grow">
+        {activeGoal && (
+          <TaskList
+            goalTitle={activeGoal.title}
+            tasks={activeGoal.tasks}
+            onTaskComplete={handleTaskComplete}
+          />
+        )}
+      </div>
 
-      {/* Chat Button */}
-      <ChatButton onClick={() => setIsChatOpen(true)} />
+      {/* Chat Button - now positioned at the bottom of the content */}
+      <div className="mt-auto pt-10 pb-6">
+        <ChatButton onClick={() => setIsChatOpen(true)} />
+      </div>
       
       {/* Chat Dialog */}
       <ChatDialog 

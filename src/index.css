@@ -87,7 +87,7 @@
 
 @layer components {
   .goal-card {
-    @apply w-64 h-64 bg-gray-100 rounded-3xl flex items-center justify-center text-3xl font-bold 
+    @apply aspect-square w-56 h-56 bg-gray-100 rounded-3xl flex items-center justify-center text-3xl font-bold 
            shadow-sm transition-all duration-300 cursor-pointer relative overflow-hidden;
   }
   
@@ -115,7 +115,7 @@
   }
 
   .chat-button {
-    @apply fixed bottom-6 left-1/2 -translate-x-1/2 bg-stride-action text-white py-4 px-6 rounded-full 
-           w-5/6 max-w-md text-center font-medium transition-all;
+    @apply bg-stride-action text-white py-4 px-6 rounded-full 
+           w-5/6 max-w-md text-center font-medium transition-all mt-10 mx-auto block;
   }
 }
